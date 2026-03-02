@@ -1,31 +1,76 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: #0f172a;
+    color: #e2e8f0;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.navbar {
+    background-color: #1e293b !important;
+    border-bottom: 1px solid #334155;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    .navbar a {
+        color: #e2e8f0 !important;
+    }
+
+.navbar-brand {
+    font-weight: 700;
 }
+
+.card-dark {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+}
+
+.btn-primary {
+    background-color: #14b8a6;
+    border: none;
+}
+
+    .btn-primary:hover {
+        background-color: #0d9488;
+    }
+
+.btn:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.2rem rgba(20,184,166,.25);
+}
+
+.form-control {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    color: #e2e8f0;
+}
+
+    .form-control:focus {
+        background-color: #0f172a;
+        color: #e2e8f0;
+        border-color: #14b8a6;
+    }
+
+footer {
+    background-color: #1e293b;
+    border-top: 1px solid #334155;
+    color: #94a3b8;
+}
+
+a {
+    color: #14b8a6;
+}
+
+    a:hover {
+        color: #2dd4bf;
+    }
