@@ -12,7 +12,7 @@ html {
 
 body {
     background-color: #0f172a;
-    color: #e2e8f0;
+    color: #0d294c;
 }
 
 .navbar {
@@ -21,7 +21,7 @@ body {
 }
 
     .navbar a {
-        color: #e2e8f0 !important;
+        color: #4e6e97 !important;
     }
 
 .navbar-brand {

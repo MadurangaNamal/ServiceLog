@@ -2,3 +2,50 @@
     ViewData["Title"] = "Home";
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css" />
+}
+
+<div id="carouselSection" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+        <div class="carousel-item active">
+            <div class="hero-slide" style="background-image:url('/images/car-1.jpg')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 class="fw-bold display-4">Track every service milestone</h1>
+                    <p>Your complete vehicle maintenance companion.</p>
+                    <a asp-controller="VehicleService" asp-action="Index" class="btn btn-lg primary-btn mt-3">
+                        Go to Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="hero-slide" style="background-image:url('/images/car-2.jpg')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 class="fw-bold display-4">Keep your fleet in top shape</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="hero-slide" style="background-image:url('/images/car-3.jpg')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h1 class="fw-bold display-4">Never miss an oil change again</h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselSection" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselSection" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
