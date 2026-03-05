@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white box-shadow">
             <div class="container-fluid">
                 <div class="d-flex align-items-center">
                     <div class="brand-icon me-2">
@@ -24,8 +24,8 @@
                 </div>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-primary-emphasis" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <li class="nav-item ms-4">
+                            <a class="nav-link text-warning-emphasis" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -36,8 +36,7 @@
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
-
-    <footer class="border-top footer text-primary-emphasis">
+    <footer class="footer text-success">
         <div class="container">
             &copy; 2026 - ServiceLog
         </div>

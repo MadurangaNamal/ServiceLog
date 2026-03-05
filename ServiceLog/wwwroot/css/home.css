@@ -1,15 +1,22 @@
-﻿body {
-    background-color: #0f172a;
-    color: #e2e8f0;
-    margin: 0;
+﻿.carousel,
+.carousel-inner,
+.carousel-item,
+.hero-slide {
+    min-height: max( calc(100vh - 3.5rem), 40vh );
+    height: auto;
+    box-sizing: border-box;
 }
 
 .hero-slide {
-    height: 100vh;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    position: relative;
 }
 
 .hero-overlay {
@@ -28,12 +35,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.brand-icon {
-    background: rgba(20, 184, 166, 0.2);
-    padding: 8px;
-    border-radius: 8px;
 }
 
 .primary-btn {
