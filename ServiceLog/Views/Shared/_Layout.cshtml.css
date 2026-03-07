@@ -1,5 +1,7 @@
 ﻿html, body {
     height: 100%;
+    margin: 0;
+    overflow-x: hidden;
 }
 
 body {
@@ -31,10 +33,3 @@ a.navbar-brand {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
-}
