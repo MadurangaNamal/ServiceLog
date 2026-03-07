@@ -10,6 +10,141 @@ public class ServiceLogRepository(ApplicationDbContext dbContext, ILogger<Servic
     private readonly ApplicationDbContext _dbContext = dbContext;
     private readonly ILogger<ServiceLogRepository> _logger = logger;
 
+
+    public async Task<Vehicle> GetVehicleDetialsAsync(int vehicleId)
+    {
+        _logger.LogDebug("Getting vehicle details for id {VehicleId}", vehicleId);
+
+        try
+        {
+            var vehicle = await _dbContext.Vehicles.FindAsync(vehicleId);
+
+            if (vehicle == null)
+            {
+                _logger.LogWarning("Vehicle with id {VehicleId} not found.", vehicleId);
+                throw new KeyNotFoundException($"Vehicle with id:{vehicleId} is not found.");
+            }
+
+            _logger.LogDebug("Found vehicle with id {VehicleId}", vehicleId);
+
+            return vehicle;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error getting vehicle details for id {VehicleId}", vehicleId);
+            throw;
+        }
+    }
+
+    public async Task<IEnumerable<Vehicle>> GetVehiclesForUserAsync(string userId)
+    {
+        _logger.LogDebug("Getting vehicles for user id {UserId}", userId);
+
+        ArgumentNullException.ThrowIfNullOrEmpty(userId);
+
+        try
+        {
+            var vehicles = await _dbContext.Vehicles
+                .AsNoTracking()
+                .OrderBy(v => v.Category)
+                .Where(v => v.UserId == userId)
+                .ToListAsync();
+
+            _logger.LogDebug("Found {Count} vehicles for user id {UserId}", vehicles.Count, userId);
+
+            return vehicles;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error getting vehicles for user id {UserId}", userId);
+            throw;
+        }
+    }
+
+    public async Task AddNewVehicleAsync(Vehicle vehicle)
+    {
+        _logger.LogDebug("Adding new vehicle for user id {UserId}", vehicle?.UserId);
+
+        ArgumentNullException.ThrowIfNull(vehicle);
+
+        try
+        {
+            _dbContext.Vehicles.Add(vehicle);
+            await _dbContext.SaveChangesAsync();
+
+            _logger.LogInformation("Created vehicle with id {VehicleId} for user id {UserId}", vehicle.Id, vehicle.UserId);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error adding new vehicle for user id {UserId}", vehicle.UserId);
+            throw;
+        }
+    }
+
+    public async Task UpdateVehicleDetailsAsync(int vehicleId, Vehicle vehicle)
+    {
+        _logger.LogDebug("Updating vehicle id {VehicleId}", vehicleId);
+
+        ArgumentNullException.ThrowIfNull(vehicle);
+
+        try
+        {
+            var vehicleDetails = await _dbContext.Vehicles.FindAsync(vehicleId);
+
+            if (vehicleDetails == null)
+            {
+                _logger.LogWarning("Vehicle with id {VehicleId} not found.", vehicleId);
+                throw new KeyNotFoundException($"Vehicle with id:{vehicleId} is not found.");
+            }
+
+            vehicleDetails.EngineNumber = vehicle.EngineNumber;
+            vehicleDetails.ChasisNumber = vehicle.ChasisNumber;
+            vehicleDetails.RegistrationNumber = vehicle.RegistrationNumber;
+            vehicleDetails.Category = vehicle.Category;
+            vehicleDetails.Brand = vehicle.Brand;
+            vehicleDetails.Model = vehicle.Model;
+            vehicleDetails.Mileage = vehicle.Mileage;
+            vehicleDetails.Year = vehicle.Year;
+
+            await _dbContext.SaveChangesAsync();
+
+            _logger.LogInformation("Updated vehicle id {VehicleId}", vehicleId);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error updating vehicle id {VehicleId}", vehicleId);
+            throw;
+        }
+    }
+
+    public async Task DeleteVehicleDetailsAsync(int vehicleId)
+    {
+        _logger.LogDebug("Deleting vehicle id {VehicleId}", vehicleId);
+
+        try
+        {
+            var vehicle = await _dbContext.Vehicles.FindAsync(vehicleId);
+
+            if (vehicle == null)
+            {
+                _logger.LogWarning("Vehicle with id {VehicleId} not found.", vehicleId);
+                throw new KeyNotFoundException($"Vehicle with id:{vehicleId} is not found.");
+            }
+
+            _dbContext.Vehicles.Remove(vehicle);
+            await _dbContext.SaveChangesAsync();
+
+            _logger.LogInformation("Deleted vehicle id {VehicleId}", vehicleId);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error deleting vehicle id {VehicleId}", vehicleId);
+            throw;
+        }
+    }
+
+    ////
+
     public async Task<ServiceRecord> GetServiceRecordAsync(int recordId)
     {
         _logger.LogDebug("Getting service record with id {RecordId}", recordId);
