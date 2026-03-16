@@ -29,7 +29,8 @@ public class VehicleServiceController : Controller
         }
 
         var userVehicles = await _serviceLogRepository.GetVehiclesForUserAsync(user.Id.ToString());
-        var selectedVehicle = vehicleId == null ? userVehicles.FirstOrDefault() : userVehicles.FirstOrDefault(v => v.Id == vehicleId);
+        var selectedVehicle = vehicleId == null ? userVehicles.FirstOrDefault()
+            : userVehicles.FirstOrDefault(v => v.Id == vehicleId);
 
         var model = new ServiceDashboardViewModel
         {
