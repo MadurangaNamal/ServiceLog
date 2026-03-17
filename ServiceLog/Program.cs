@@ -7,9 +7,10 @@ using ServiceLog.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddUserSecrets<Program>();
-var connectionString = builder.Configuration["DefaultConnection"]
-    ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = builder.Configuration["ServiceLogDBConnection"]
+    ?? throw new InvalidOperationException("Connection string 'ServiceLogDBConnection' not found.");
 
+builder.Services.AddHttpLogging();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IServiceLogRepository, ServiceLogRepository>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -26,7 +27,7 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseMigrationsEndPoint();
+    app.UseDeveloperExceptionPage();
 }
 else
 {
@@ -36,8 +37,11 @@ else
 
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseHttpLogging();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapStaticAssets();
+
 app.MapHealthChecks("/health", new HealthCheckOptions
 {
     ResponseWriter = async (context, report) =>
