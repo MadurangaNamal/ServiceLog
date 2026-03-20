@@ -193,7 +193,7 @@ public class ServiceLogRepository(ApplicationDbContext dbContext, ILogger<Servic
         }
     }
 
-    public async Task CreateServiceRecord(ServiceRecord serviceRecord)
+    public async Task CreateServiceRecordAsync(ServiceRecord serviceRecord)
     {
         _logger.LogDebug("Creating new service record for vehicle id {VehicleId}", serviceRecord?.VehicleId);
 
@@ -217,7 +217,7 @@ public class ServiceLogRepository(ApplicationDbContext dbContext, ILogger<Servic
         }
     }
 
-    public async Task UpdateServiceRecord(int recordId, ServiceRecord serviceRecord)
+    public async Task UpdateServiceRecordAsync(int recordId, ServiceRecord serviceRecord)
     {
         _logger.LogDebug("Updating service record id {RecordId}", recordId);
 

@@ -84,7 +84,14 @@ public class VehicleController : Controller
     [HttpPost]
     public async Task<IActionResult> Delete(int vehicleId)
     {
+        var user = await _userManager.GetUserAsync(User);
+        var userVehicles = await _serviceLogRepository.GetVehiclesForUserAsync(user!.Id.ToString());
+
+        if (userVehicles.All(v => v.Id != vehicleId))
+            return Forbid();
+
         await _serviceLogRepository.DeleteVehicleDetailsAsync(vehicleId);
+
         return RedirectToAction("Index");
     }
 }

@@ -15,8 +15,8 @@ public interface IServiceLogRepository
     #region Service Records
     Task<ServiceRecord> GetServiceRecordAsync(int recordId);
     Task<IEnumerable<ServiceRecord>> GetServiceRecordsForVehicleAsync(int vehicleId);
-    Task CreateServiceRecord(ServiceRecord serviceRecord);
-    Task UpdateServiceRecord(int recordId, ServiceRecord serviceRecord);
+    Task CreateServiceRecordAsync(ServiceRecord serviceRecord);
+    Task UpdateServiceRecordAsync(int recordId, ServiceRecord serviceRecord);
     Task DeleteServiceRecordAsync(int recordId);
     #endregion
 }
