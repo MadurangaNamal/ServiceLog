@@ -98,7 +98,7 @@ public class ServiceLogRepository(ApplicationDbContext dbContext, ILogger<Servic
             }
 
             vehicleDetails.EngineNumber = vehicle.EngineNumber;
-            vehicleDetails.ChasisNumber = vehicle.ChasisNumber;
+            vehicleDetails.ChassisNumber = vehicle.ChassisNumber;
             vehicleDetails.RegistrationNumber = vehicle.RegistrationNumber;
             vehicleDetails.Category = vehicle.Category;
             vehicleDetails.Brand = vehicle.Brand;

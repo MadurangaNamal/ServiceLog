@@ -21,7 +21,7 @@ public class Vehicle
     public int Year { get; set; }
     public int Mileage { get; set; }
     public string? EngineNumber { get; set; }
-    public string? ChasisNumber { get; set; }
+    public string? ChassisNumber { get; set; }
     public ICollection<ServiceRecord> ServiceRecords { get; set; } = [];
     public string? UserId { get; set; }
 
