@@ -7,12 +7,12 @@ using ServiceLog.Repositories;
 namespace ServiceLog.Controllers;
 
 [Authorize]
-public class VehicleController : Controller
+public class VehiclesController : Controller
 {
     private readonly IServiceLogRepository _serviceLogRepository;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public VehicleController(IServiceLogRepository serviceLogRepository, UserManager<ApplicationUser> userManager)
+    public VehiclesController(IServiceLogRepository serviceLogRepository, UserManager<ApplicationUser> userManager)
     {
         _serviceLogRepository = serviceLogRepository ?? throw new ArgumentNullException(nameof(serviceLogRepository));
         _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));

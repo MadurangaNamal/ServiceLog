@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Vehicle>;
+
+@{
+    ViewData["Title"] = "Vehicle List";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-8">
+        <div class="card-dark p-2 shadow">
+            <section>
+                <div class="table-responsive shadow-sm rounded">
+                    <table class="table table-success table-hover align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Registration No</th>
+                                <th scope="col">Model</th>
+                                <th scope="col">Year</th>
+                                <th scope="col">Mileage</th>
+                                <th class="col-2">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Any())
+                            {
+                                @foreach (var vehicle in Model)
+                                {
+                                    <tr>
+                                        <td>@vehicle.RegistrationNumber</td>
+                                        <td>@vehicle.Model</td>
+                                        <td>@vehicle.Year</td>
+                                        <td>@vehicle.Mileage</td>
+                                        <td class="d-flex gap-1">
+                                            <a asp-controller="Vehicles" asp-action="UpdateVehicle" asp-route-vehicleId="@vehicle.Id" class="btn btn-sm btn-primary">
+                                                Edit <i class="bi bi-pencil"></i>
+                                            </a>
+                                            <form asp-controller="Vehicles" asp-action="Delete" asp-route-vehicleId="@vehicle.Id" method="post"
+                                                  onsubmit="return confirm('Are you sure you want to remove this vehicle?');">
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    Delete <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted py-4">
+                                        <i class="bi bi-inbox" style="font-size: 2rem;"></i>
+                                        <div class="mt-2">No Records Available</div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
