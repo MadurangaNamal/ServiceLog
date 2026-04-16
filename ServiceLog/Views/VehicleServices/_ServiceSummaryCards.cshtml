@@ -1,0 +1,63 @@
+﻿@model Vehicle?
+
+@if (Model == null)
+{
+    <div class="alert alert-secondary">No vehicle selected.</div>
+    return;
+}
+
+@{
+    var lastService = Model.ServiceRecords.OrderByDescending(r => r.ServiceDate).FirstOrDefault();
+    var lastServiceDate = lastService?.ServiceDate;
+    var lastServiceMileage = lastService?.CurrentMileage ?? Model.Mileage;
+
+    const int serviceInterval = 10_000;
+    var nextServiceMileage = ((lastServiceMileage / serviceInterval) + 1) * serviceInterval;
+    var milesUntilService = nextServiceMileage - Model.Mileage;
+
+    const int oilInterval = 5_000;
+    var nextOilMileage = ((Model.Mileage / oilInterval) + 1) * oilInterval;
+    var milesUntilOil = nextOilMileage - Model.Mileage;
+
+    var estimatedServiceDate = DateTime.UtcNow.AddMonths(milesUntilService / 1000);
+    var estimatedOilDate = DateTime.UtcNow.AddMonths(milesUntilOil / 1000);
+}
+
+<div class="row g-3 mb-4">
+
+    <div class="col-12 col-sm-4">
+        <div class="summary-card summary-card--accent">
+            <div class="summary-card__header">
+                <i class="bi bi-speedometer2 text-primary"></i>
+                <span>Next Service</span>
+            </div>
+            <p class="summary-card__value text-primary">@nextServiceMileage.ToString("N0") km</p>
+            <p class="summary-card__sub">@milesUntilService.ToString("N0") km remaining</p>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-4">
+        <div class="summary-card">
+            <div class="summary-card__header">
+                <i class="bi bi-calendar3"></i>
+                <span>Estimated Service Date</span>
+            </div>
+            <p class="summary-card__value">@estimatedServiceDate.ToString("MMM d, yyyy")</p>
+            <p class="summary-card__sub">Based on current driving patterns</p>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-4">
+        <div class="summary-card">
+            <div class="summary-card__header">
+                <i class="bi bi-droplet-half"></i>
+                <span>Next Oil Change</span>
+            </div>
+            <p class="summary-card__value">@nextOilMileage.ToString("N0") km</p>
+            <p class="summary-card__sub">
+                @milesUntilOil.ToString("N0") km remaining
+                · @estimatedOilDate.ToString("MMM d")
+            </p>
+        </div>
+    </div>
+</div>

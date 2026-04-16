@@ -63,18 +63,18 @@ public class VehiclesController : Controller
         return View("AddNewVehicle", vehicle);
     }
 
-    public async Task<IActionResult> UpdateVehicle(int vehicleId)
+    public async Task<IActionResult> UpdateVehicle(int Id)
     {
-        var vehicle = await _serviceLogRepository.GetVehicleDetialsAsync(vehicleId);
+        var vehicle = await _serviceLogRepository.GetVehicleDetialsAsync(Id);
         return View(vehicle);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Update(int vehicleId, Vehicle vehicle)
+    public async Task<IActionResult> Update(int Id, Vehicle vehicle)
     {
         if (ModelState.IsValid)
         {
-            await _serviceLogRepository.UpdateVehicleDetailsAsync(vehicleId, vehicle);
+            await _serviceLogRepository.UpdateVehicleDetailsAsync(Id, vehicle);
             return RedirectToAction("Index");
         }
 
@@ -82,15 +82,15 @@ public class VehiclesController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Delete(int vehicleId)
+    public async Task<IActionResult> Delete(int Id)
     {
         var user = await _userManager.GetUserAsync(User);
         var userVehicles = await _serviceLogRepository.GetVehiclesForUserAsync(user!.Id.ToString());
 
-        if (userVehicles.All(v => v.Id != vehicleId))
+        if (userVehicles.All(v => v.Id != Id))
             return Forbid();
 
-        await _serviceLogRepository.DeleteVehicleDetailsAsync(vehicleId);
+        await _serviceLogRepository.DeleteVehicleDetailsAsync(Id);
 
         return RedirectToAction("Index");
     }

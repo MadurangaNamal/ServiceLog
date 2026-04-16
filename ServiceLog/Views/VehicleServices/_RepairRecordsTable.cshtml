@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ServiceRecord>
+
+@{
+    var records = Model?.ToList() ?? new List<ServiceRecord>();
+    var totalCost = records.Sum(r => r.Cost);
+}
+
+<div class="records-card">
+    <div class="records-card__header">
+        <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-wrench text-primary"></i>
+            <h2 class="records-card__title mb-0">Repair History</h2>
+        </div>
+        <span class="records-card__total font-monospace">
+            Total: <span class="text-primary fw-semibold">@totalCost.ToString("N2") AED</span>
+        </span>
+    </div>
+
+    @if (!records.Any())
+    {
+        <div class="records-card__empty">No repair records found.</div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table records-table mb-0">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Notes</th>
+                        <th class="text-end">Mileage</th>
+                        <th class="text-end">Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var r in records)
+                    {
+                        <tr>
+                            <td class="font-monospace small">
+                                @r.ServiceDate.ToString("yyyy-MM-dd")
+                            </td>
+                            <td>
+                                <span class="service-badge service-badge--@r.ServiceType.ToString().ToLower()">
+                                    @r.ServiceType.ToString()
+                                </span>
+                            </td>
+                            <td class="text-muted small">@(r.Notes ?? "—")</td>
+                            <td class="text-end font-monospace small">
+                                @r.CurrentMileage.ToString("N0")
+                            </td>
+                            <td class="text-end font-monospace small fw-semibold">
+                                @r.Cost.ToString("N2") AED
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
