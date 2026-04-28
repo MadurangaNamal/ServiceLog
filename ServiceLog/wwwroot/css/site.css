@@ -43,7 +43,7 @@ body {
 .navbar-nav .nav-link:hover {
     transform: scale(1.05);
     color: #007bff;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .card-dark {
