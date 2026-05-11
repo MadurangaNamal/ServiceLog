@@ -98,3 +98,39 @@ a {
 a:hover {
     color: #2dd4bf;
 }
+
+.dropdown-menu .dropdown-item {
+    color: #212529 !important;
+}
+
+    .dropdown-menu .dropdown-item.text-danger {
+        color: #dc3545 !important;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: #f8f9fa;
+        color: #212529 !important;
+    }
+
+.dashboard-btn {
+    background-color: var(--bs-danger);
+    border: 1px solid var(--bs-danger-border-subtle);
+    color: white;
+    padding: 3px 4px;
+    border-radius: 3px;
+}
+
+    .dashboard-btn:hover {
+        background-color: var(--bs-danger-text-emphasis);
+    }
+
+.login-btn {
+    background-color: var(--bs-primary);
+    border: 1px solid var(--bs-warning-border-subtle);
+    color: black;
+    padding: 3px 4px;
+    border-radius: 3px;
+}
+    .login-btn:hover {
+        background-color: var(--bs-primary-text-emphasis);
+    }

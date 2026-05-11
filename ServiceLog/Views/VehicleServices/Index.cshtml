@@ -53,14 +53,12 @@
         @if (vehicle != null)
         {
             <div class="text-end mb-2">
-                <a asp-controller="VehicleServices" asp-action="CreateServiceRecord" asp-route-vehicleId="@vehicle.Id" 
-                class="btn btn-success">
+                <a asp-controller="VehicleServices" asp-action="CreateServiceRecord" asp-route-vehicleId="@vehicle.Id" class="btn btn-success">
                     <i class="bi bi-file-earmark-plus"></i> New service record
                 </a>
             </div>
         }
 
         @await Html.PartialAsync("_RepairRecordsTable", records)
-
     </div>
 </div>

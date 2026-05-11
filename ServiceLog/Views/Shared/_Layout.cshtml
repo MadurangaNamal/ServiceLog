@@ -32,7 +32,10 @@
                             <a class="nav-link" asp-area="" asp-controller="Vehicles" asp-action="Index">Vehicles <i class="bi bi-truck"></i></a>
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
+                    <div class="d-flex flex-row ms-auto align-items-center gap-1">
+                        <div class="d-inline-flex"> <partial name="_DashboardButtonPartial" /> </div>
+                        <div class="d-inline-flex"> <partial name="_LoginPartial" /> </div>
+                    </div>
                 </div>
             </div>
         </nav>
