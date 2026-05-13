@@ -45,6 +45,7 @@ public class ServiceLogRepository(ApplicationDbContext dbContext, ILogger<Servic
         try
         {
             var vehicles = await _dbContext.Vehicles
+                .Include(v => v.ServiceRecords)
                 .AsNoTracking()
                 .OrderBy(v => v.Category)
                 .Where(v => v.UserId == userId)

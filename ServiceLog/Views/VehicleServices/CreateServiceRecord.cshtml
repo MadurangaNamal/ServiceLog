@@ -14,6 +14,7 @@
             <section>
                 <form asp-controller="VehicleServices" asp-action="Create" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    <input asp-for="VehicleId" type="hidden" />
                     <div class="mb-3">
                         <label asp-for="ServiceType" class="form-label">
                             Type <span class="text-danger">*</span>

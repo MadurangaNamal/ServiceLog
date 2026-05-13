@@ -32,6 +32,8 @@ public class VehicleServicesController : Controller
         var selectedVehicle = vehicleId == null ? userVehicles.FirstOrDefault()
             : userVehicles.FirstOrDefault(v => v.Id == vehicleId);
 
+        ViewBag.SelectedVehicleId = selectedVehicle?.Id;
+
         var model = new ServiceDashboardViewModel
         {
             Vehicles = userVehicles,
@@ -53,7 +55,6 @@ public class VehicleServicesController : Controller
         }
 
         var vehicles = await _serviceLogRepository.GetVehiclesForUserAsync(user.Id);
-
         var vehicle = vehicles.FirstOrDefault(v => v.Id == vehicleId);
 
         if (vehicle == null)
