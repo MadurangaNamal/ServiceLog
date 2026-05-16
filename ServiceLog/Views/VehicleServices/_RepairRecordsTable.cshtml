@@ -29,8 +29,9 @@
                         <th class="text-primary-emphasis">Date</th>
                         <th class="text-primary-emphasis">Type</th>
                         <th class="text-primary-emphasis">Notes</th>
-                        <th class="text-end text-primary-emphasis">Mileage</th>
-                        <th class="text-end text-primary-emphasis">Cost</th>
+                        <th class="text-primary-emphasis">Mileage</th>
+                        <th class="text-primary-emphasis">Cost</th>
+                        <th class="text-end"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,11 +47,25 @@
                                 </span>
                             </td>
                             <td class="text-muted small">@(r.Notes ?? "—")</td>
-                            <td class="text-end font-monospace small">
+                            <td class="font-monospace small">
                                 @r.CurrentMileage.ToString("N0")
                             </td>
-                            <td class="text-end font-monospace small fw-semibold">
+                            <td class="font-monospace small fw-semibold">
                                 @r.Cost.ToString("N2") AED
+                            </td>
+                            <td class="text-end">
+
+                                <button type="button"
+                                        class="btn btn-sm btn-outline-danger"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal"
+                                        data-id="@r.Id"
+                                        data-description="@($"{r.ServiceType} - {r.ServiceDate:yyyy-MM-dd}")"
+                                        data-delete-url="/VehicleServices/Delete">
+
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
                             </td>
                         </tr>
                     }

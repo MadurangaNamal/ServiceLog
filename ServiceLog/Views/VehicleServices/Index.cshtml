@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Dashboard";
+    var vehicles = Model.Vehicles;
     var vehicle = Model.Vehicle;
     var records = Model.ServiceRecords?.OrderByDescending(r => r.ServiceDate).ToList()
                   ?? new List<ServiceRecord>();
@@ -45,7 +46,7 @@
                 }
             </div>
 
-            @await Html.PartialAsync("_VehicleSelector", Model.Vehicles)
+            @await Html.PartialAsync("_VehicleSelector", vehicles)
         </div>
 
         @await Html.PartialAsync("_ServiceSummaryCards", vehicle)
@@ -62,3 +63,5 @@
         @await Html.PartialAsync("_RepairRecordsTable", records)
     </div>
 </div>
+
+<partial name="_DeleteConfirmationPartial" />
