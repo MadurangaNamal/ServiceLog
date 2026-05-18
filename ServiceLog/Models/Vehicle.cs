@@ -27,4 +27,6 @@ public class Vehicle
 
     [ForeignKey("UserId")]
     public ApplicationUser? User { get; set; }
+    public bool IsDeleted { get; set; } = false;
+    public DateTime? DeletedOnUtc { get; set; }
 }

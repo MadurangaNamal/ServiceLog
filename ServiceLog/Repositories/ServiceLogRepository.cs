@@ -132,10 +132,12 @@ public class ServiceLogRepository(ApplicationDbContext dbContext, ILogger<Servic
                 throw new KeyNotFoundException($"Vehicle with id:{vehicleId} is not found.");
             }
 
-            _dbContext.Vehicles.Remove(vehicle);
+            vehicle.IsDeleted = true;
+            vehicle.DeletedOnUtc = DateTime.UtcNow;
+
             await _dbContext.SaveChangesAsync();
 
-            _logger.LogInformation("Deleted vehicle id {VehicleId}", vehicleId);
+            _logger.LogInformation("Soft deleted vehicle id {VehicleId}", vehicleId);
         }
         catch (Exception ex)
         {

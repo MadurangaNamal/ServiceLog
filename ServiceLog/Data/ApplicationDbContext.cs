@@ -13,6 +13,9 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.Entity<Vehicle>()
+        .HasQueryFilter(v => !v.IsDeleted);
+
+        builder.Entity<Vehicle>()
            .HasOne(v => v.User)
            .WithMany(u => u.Vehicles)
            .HasForeignKey(v => v.UserId)
@@ -20,6 +23,9 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 
         builder.Entity<Vehicle>()
             .HasIndex(v => v.UserId);
+
+        builder.Entity<ServiceRecord>()
+        .HasQueryFilter(sr => !sr.Vehicle!.IsDeleted);
 
         builder.Entity<ServiceRecord>()
             .HasOne(sr => sr.Vehicle)
