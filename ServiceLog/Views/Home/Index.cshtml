@@ -6,38 +6,214 @@
     <link rel="stylesheet" href="~/css/home.css" />
 }
 
-<div id="carouselSection" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+<div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="5500">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+    </div>
+
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <div class="hero-slide" style="background-image:url('/images/car-1.jpg')">
-                <div class="hero-content">
-                    <h2 class="fw-bold display-4">Track every service milestone</h2>
-                    <p>Your complete vehicle maintenance companion</p>
+            <div class="hero-slide" style="background-image: url('/images/car-1.jpg')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content container">
+                    <span class="hero-eyebrow">Vehicle Maintenance Simplified</span>
+                    <h1 class="hero-title">Track every service<br>milestone</h1>
+                    <p class="hero-subtitle">Your complete vehicle maintenance companion</p>
+                    <div class="hero-actions">
+                        <a asp-controller="Vehicles" asp-action="Index" class="btn btn-hero-primary">
+                            <i class="bi bi-truck me-2"></i>My Vehicles
+                        </a>
+                        <a asp-controller="Home" asp-action="About" class="btn btn-hero-ghost">Learn More</a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="carousel-item">
-            <div class="hero-slide" style="background-image:url('/images/car-2.jpg')">
-                <div class="hero-content">
-                    <h2 class="fw-bold display-4">Keep your fleet in top shape</h2>
+            <div class="hero-slide" style="background-image: url('/images/car-2.jpg')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content container">
+                    <span class="hero-eyebrow">Fleet Management</span>
+                    <h1 class="hero-title">Keep your fleet<br>in top shape</h1>
+                    <p class="hero-subtitle">Manage multiple vehicles from a single, streamlined dashboard</p>
+                    <div class="hero-actions">
+                        <a asp-controller="Vehicles" asp-action="AddNewVehicle" class="btn btn-hero-primary">
+                            <i class="bi bi-plus-circle me-2"></i>Add Vehicle
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="carousel-item">
-            <div class="hero-slide" style="background-image:url('/images/car-3.jpg')">
-                <div class="hero-content">
-                    <h2 class="fw-bold display-4">Never miss an oil change again</h2>
+            <div class="hero-slide" style="background-image: url('/images/car-3.jpg')">
+                <div class="hero-overlay"></div>
+                <div class="hero-content container">
+                    <span class="hero-eyebrow">Smart Reminders</span>
+                    <h1 class="hero-title">Never miss an<br>oil change again</h1>
+                    <p class="hero-subtitle">Stay ahead of maintenance schedules with intelligent service alerts</p>
+                    <div class="hero-actions">
+                        <a asp-controller="Home" asp-action="Reminders" class="btn btn-hero-primary">
+                            <i class="bi bi-bell me-2"></i>View Reminders
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselSection" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselSection" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon"></span>
     </button>
 </div>
+
+<section class="stats-bar">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Service History Retained</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number">0</span>
+                <span class="stat-label">Missed Maintenance Events</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number">∞</span>
+                <span class="stat-label">Vehicles Supported</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Access Anywhere</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-tag">Why ServiceLog</span>
+            <h2 class="section-title">Everything your vehicle needs,<br>in one place.</h2>
+        </div>
+
+        <div class="row g-4 features-grid">
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-journal-check"></i>
+                    </div>
+                    <h5 class="feature-title">Full Service History</h5>
+                    <p class="feature-desc">Log every oil change, tyre rotation, and repair with dates, mileage, and cost — all in one searchable record.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-bell-fill"></i>
+                    </div>
+                    <h5 class="feature-title">Smart Reminders</h5>
+                    <p class="feature-desc">Set maintenance intervals by mileage or date. ServiceLog alerts you before it's too late, not after.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-truck-flatbed"></i>
+                    </div>
+                    <h5 class="feature-title">Multi-Vehicle Support</h5>
+                    <p class="feature-desc">Track your entire fleet — from a daily driver to a weekend project car — under a single account.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+                    <h5 class="feature-title">Cost Insights</h5>
+                    <p class="feature-desc">See maintenance spending over time. Understand which vehicle costs more to keep on the road.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="how-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="section-tag">Getting Started</span>
+            <h2 class="section-title">Up and running in minutes.</h2>
+        </div>
+        <div class="steps-row">
+            <div class="step-item">
+                <div class="step-number">01</div>
+                <div class="step-body">
+                    <h6 class="step-title">Create your account</h6>
+                    <p class="step-desc">Register in seconds — no credit card needed.</p>
+                </div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step-item">
+                <div class="step-number">02</div>
+                <div class="step-body">
+                    <h6 class="step-title">Add your vehicle</h6>
+                    <p class="step-desc">Enter make, model, year, and current mileage.</p>
+                </div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step-item">
+                <div class="step-number">03</div>
+                <div class="step-body">
+                    <h6 class="step-title">Log a service</h6>
+                    <p class="step-desc">Record what was done, when, and how much it cost.</p>
+                </div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step-item">
+                <div class="step-number">04</div>
+                <div class="step-body">
+                    <h6 class="step-title">Stay on schedule</h6>
+                    <p class="step-desc">Let ServiceLog remind you what's coming up next.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container text-center">
+        <h2 class="cta-title">Ready to take control of your maintenance?</h2>
+        <p class="cta-subtitle">Join thousands of vehicle owners who never miss a service.</p>
+        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-cta">
+            <i class="bi bi-person-plus me-2"></i>Get Started Free
+        </a>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <i class="bi bi-wrench me-1"></i>
+                Service<span>Log</span>
+            </div>
+            <p class="footer-copy">&copy; @DateTime.Now.Year ServiceLog. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </div>
+</footer>

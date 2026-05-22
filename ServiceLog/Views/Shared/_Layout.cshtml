@@ -28,12 +28,14 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home <i class="bi bi-house-door"></i></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Vehicles" asp-action="Index">Vehicles <i class="bi bi-truck"></i></a>
-                        </li>
                     </ul>
                     <div class="d-flex flex-row ms-auto align-items-center gap-1">
-                        <div class="d-inline-flex"> <partial name="_DashboardButtonPartial" /> </div>
+                        <a asp-controller="Vehicles" asp-action="Index" class="btn dashboard-btn mt-3">
+                            <i class="bi bi-truck"></i> Vehicles
+                        </a>
+                        <a asp-controller="VehicleServices" asp-action="Index" class="btn dashboard-btn mt-3">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a>
                         <div class="d-inline-flex"> <partial name="_LoginPartial" /> </div>
                     </div>
                 </div>
@@ -44,7 +46,7 @@
     <main role="main">
         @RenderBody()
     </main>
-    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

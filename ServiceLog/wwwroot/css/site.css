@@ -113,15 +113,15 @@ a:hover {
     }
 
 .dashboard-btn {
-    background-color: var(--bs-danger);
-    border: 1px solid var(--bs-danger-border-subtle);
+    background-color: var(--teal);
+    border: 1px solid var(--teal-dark);
     color: white;
     padding: 3px 4px;
     border-radius: 3px;
 }
 
     .dashboard-btn:hover {
-        background-color: var(--bs-danger-text-emphasis);
+        background-color: var(--teal-dark);
     }
 
 .login-btn {

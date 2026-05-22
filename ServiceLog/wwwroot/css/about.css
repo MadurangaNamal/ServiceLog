@@ -1,0 +1,120 @@
+﻿.about-hero {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--mid) 55%, #0f4f4a 100%);
+    padding: 4.5rem 0 4rem;
+    border-bottom: 1px solid rgba(20, 184, 166, 0.25);
+}
+
+.about-hero-inner {
+    max-width: 720px;
+}
+
+.about-hero-title {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+}
+
+.about-hero-lead {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+}
+
+.about-hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.about-section {
+    padding: 4.5rem 0;
+}
+
+.about-section-white {
+    background: var(--white);
+}
+
+.about-mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .about-mission-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.about-mission-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+    height: 100%;
+}
+
+    .about-mission-card h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 0.75rem;
+    }
+
+    .about-mission-card p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+.about-mission-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--teal-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    color: var(--teal-dark);
+    margin-bottom: 1.25rem;
+}
+
+.about-story p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+}
+
+    .about-story p:last-child {
+        margin-bottom: 0;
+    }
+
+.about-contact-strip {
+    background: var(--dark);
+    padding: 2.5rem 0;
+    text-align: center;
+}
+
+    .about-contact-strip p {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .about-contact-strip a {
+        color: var(--teal);
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+        .about-contact-strip a:hover {
+            color: #2dd4bf;
+        }

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLog.Models;
 using System.Diagnostics;
@@ -11,7 +12,13 @@ namespace ServiceLog.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult Reminders()
         {
             return View();
         }

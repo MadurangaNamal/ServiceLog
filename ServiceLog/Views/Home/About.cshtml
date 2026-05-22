@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css" />
+    <link rel="stylesheet" href="~/css/about.css" />
+}
+
+<section class="about-hero">
+    <div class="container">
+        <div class="about-hero-inner">
+            <span class="hero-eyebrow">About ServiceLog</span>
+            <h1 class="about-hero-title">Built for people who care about their vehicles.</h1>
+            <p class="about-hero-lead">
+                ServiceLog is a vehicle maintenance platform that helps owners and fleet managers
+                record service history, track costs, and stay ahead of scheduled maintenance — all in one place.
+            </p>
+            <div class="about-hero-actions">
+                <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-hero-primary">
+                    <i class="bi bi-person-plus me-2"></i>Create Free Account
+                </a>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-hero-ghost">
+                    <i class="bi bi-arrow-left me-2"></i>Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-section about-section-white">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 about-story">
+                <span class="section-tag">Our Story</span>
+                <h2 class="section-title mb-4">Maintenance records shouldn't live in a glove box.</h2>
+                <p>
+                    Most drivers rely on paper receipts, memory, or scattered notes to track oil changes,
+                    inspections, and repairs. When it's time to sell a vehicle or plan the next service,
+                    that information is hard to find — and easy to lose.
+                </p>
+                <p>
+                    ServiceLog was created to solve that problem. We give you a clear, searchable record
+                    for every vehicle you own: what was done, when it was done, how much it cost, and what
+                    comes next on the maintenance calendar.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-mission-grid">
+                    <div class="about-mission-card">
+                        <div class="about-mission-icon"><i class="bi bi-bullseye"></i></div>
+                        <h3>Our Mission</h3>
+                        <p>
+                            Make vehicle maintenance simple, transparent, and stress-free for every owner —
+                            from a single daily driver to an entire fleet.
+                        </p>
+                    </div>
+                    <div class="about-mission-card">
+                        <div class="about-mission-icon"><i class="bi bi-eye"></i></div>
+                        <h3>Our Vision</h3>
+                        <p>
+                            A world where no vehicle suffers from missed maintenance because the owner
+                            lacked the right information at the right time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-contact-strip">
+    <div class="container">
+        <p>Questions or feedback? We'd like to hear from you.</p>
+        <a href="mailto:madhuranganw@gmail.com">support@servicelog.app</a>
+    </div>
+</section>

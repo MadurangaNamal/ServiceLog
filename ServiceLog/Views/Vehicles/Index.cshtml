@@ -6,63 +6,61 @@
 
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
-        <div class="card-dark p-2 shadow">
-            <section>
-                <div class="table-responsive shadow-sm rounded">
-                    <table class="table table-success table-hover align-middle">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">Registration No</th>
-                                <th scope="col">Model</th>
-                                <th scope="col">Brand</th>
-                                <th scope="col">Year</th>
-                                <th scope="col">Mileage (Km)</th>
-                                <th class="col-2">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (Model != null && Model.Any())
-                            {
-                                @foreach (var vehicle in Model)
-                                {
-                                    <tr>
-                                        <td>@vehicle.RegistrationNumber</td>
-                                        <td>@vehicle.Model</td>
-                                        <td>@vehicle.Brand</td>
-                                        <td>@vehicle.Year</td>
-                                        <td>&nbsp; @vehicle.Mileage</td>
-                                        <td class="d-flex gap-1">
-                                            <a asp-controller="Vehicles" asp-action="UpdateVehicle" asp-route-vehicleId="@vehicle.Id" class="btn btn-sm btn-primary">
-                                                Edit <i class="bi bi-pencil"></i>
-                                            </a>
-                                            <button type="button"
-                                                    class="btn btn-sm btn-danger"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#deleteModal"
-                                                    data-id="@vehicle.Id"
-                                                    data-description="@($"{vehicle.Brand} {vehicle.Model}")"
-                                                    data-delete-url="/Vehicles/Delete">
-
-                                                Delete <i class="bi bi-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                }
-                            }
-                            else
+        <section>
+            <div class="table-responsive rounded">
+                <table class="table records-table mb-0">
+                    <thead>
+                        <tr>
+                            <th class="text-primary-emphasis">Registration No</th>
+                            <th class="text-primary-emphasis">Model</th>
+                            <th class="text-primary-emphasis">Brand</th>
+                            <th class="text-primary-emphasis">Year</th>
+                            <th class="text-primary-emphasis">Mileage (Km)</th>
+                            <th class="col-2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            @foreach (var vehicle in Model)
                             {
                                 <tr>
-                                    <td colspan="5" class="text-center text-muted py-4">
-                                        <i class="bi bi-inbox" style="font-size: 2rem;"></i>
-                                        <div class="mt-2">No Records Available</div>
+                                    <td class="font-monospace small">@vehicle.RegistrationNumber</td>
+                                    <td class="font-monospace small">@vehicle.Model</td>
+                                    <td class="font-monospace small">@vehicle.Brand</td>
+                                    <td class="font-monospace small">@vehicle.Year</td>
+                                    <td class="font-monospace small">&nbsp; @vehicle.Mileage</td>
+                                    <td class="d-flex gap-1">
+                                        <a asp-controller="Vehicles" asp-action="UpdateVehicle" asp-route-vehicleId="@vehicle.Id" class="btn btn-sm btn-primary">
+                                            Edit <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <button type="button"
+                                                class="btn btn-sm btn-danger"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#deleteModal"
+                                                data-id="@vehicle.Id"
+                                                data-description="@($"{vehicle.Brand} {vehicle.Model}")"
+                                                data-delete-url="/Vehicles/Delete">
+
+                                            Delete <i class="bi bi-trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             }
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-        </div>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center text-muted py-4">
+                                    <i class="bi bi-inbox" style="font-size: 2rem;"></i>
+                                    <div class="mt-2">No Records Available</div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
 </div>
 
