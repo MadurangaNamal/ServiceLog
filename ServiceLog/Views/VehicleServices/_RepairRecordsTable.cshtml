@@ -1,11 +1,13 @@
 ﻿@model IEnumerable<ServiceRecord>
 
 @{
-    var records = Model?.ToList() ?? new List<ServiceRecord>();
+    const int pageSize = 5;
+    var records = Model?.ToList() ?? [];
     var totalCost = records.Sum(r => r.Cost);
+    var showPagination = records.Count > pageSize;
 }
 
-<div class="records-card">
+<div class="records-card" id="repairRecordsCard" data-page-size="@pageSize">
     <div class="records-card__header">
         <div class="d-flex align-items-center gap-2">
             <i class="bi bi-wrench text-primary"></i>
@@ -35,9 +37,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var r in records)
+                    @for (var i = 0; i < records.Count; i++)
                     {
-                        <tr>
+                        var r = records[i];
+                        <tr data-repair-row>
                             <td class="font-monospace small">
                                 @r.ServiceDate.ToString("yyyy-MM-dd")
                             </td>
@@ -72,5 +75,34 @@
                 </tbody>
             </table>
         </div>
+
+        @if (showPagination)
+        {
+            <div class="records-card__pagination">
+                <span class="records-pagination__info" data-pagination-info></span>
+                <nav aria-label="Repair records pagination">
+                    <ul class="pagination pagination-sm records-pagination mb-0">
+                        <li class="page-item">
+                            <button type="button" class="page-link" data-page-prev aria-label="Previous page">
+                                <i class="bi bi-chevron-left"></i>
+                            </button>
+                        </li>
+                        <li class="page-item">
+                            <span class="page-link records-pagination__current" data-pagination-page></span>
+                        </li>
+                        <li class="page-item">
+                            <button type="button" class="page-link" data-page-next aria-label="Next page">
+                                <i class="bi bi-chevron-right"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        }
     }
 </div>
+
+@if (showPagination)
+{
+    <script src="~/js/pagination.js" asp-append-version="true"></script>
+}
